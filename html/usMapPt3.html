@@ -9,8 +9,27 @@
 </head>
 <body>
     <h1>US MAP OF COVID CASES</h1>
-    <p>Covid Cases Per 100,000</p>
+    <h3>County Covid Cases Per 100,000 People</h3>
+    <div id="box">
     <svg id="usMap"></svg>
+    <div id="InfoHelp">
     <div id="tooltip"></div>
+    <svg id='legendMap'>
+        <g>
+            <rect x="15" y="0" width="40" height="40" fill="#fff3b0"></rect>
+            <text x="60" y="20" fill="white">Low Covid-19 Level </text>
+        </g>
+        <g>
+            <rect x="15" y="40" width="40" height="40" fill="#e09f3e"></rect>
+            <text x="60" y="60" fill="white">Medium Covid-19 Level</text>
+        </g>
+        <g>
+            <rect x="15" y="80" width="40" height="40" fill="#9e2a2b"></rect>
+            <text x="60" y="100" fill="white">High Covid-19 Level</text>
+        </g>
+   </svg>
+    </div>
+    </div>
+    
 </body>
 </html>

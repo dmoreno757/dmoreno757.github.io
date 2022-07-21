@@ -8,19 +8,60 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #FDF1E7;
+    margin: none;
 }
 
 svg{
     background-color: #4e9696;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #usMap {
-    min-width: 1300px;
-    min-height: 800px;
+    min-width: 1000px;
+    min-height: 200px;
+}
+
+.county:hover {
+    fill: black
+}
+
+#legendMap{
+    color: rgb(56, 58, 74);
+    font-size: 18px;
+    text-align: center;
+    min-height: 150px;
+    max-width: 250px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#usMap {
+    min-width: 900px;
+    min-height: 900px;
 }
 
 #tooltip {
     visibility: hidden;
     height: auto;
     width: auto;
+    margin-top: 2px;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
+
+#box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#InfoHelp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5px;
+}
+

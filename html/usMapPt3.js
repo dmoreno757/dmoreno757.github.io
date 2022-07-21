@@ -28,12 +28,12 @@ var drawMap = () => {
         })
         var cases = county['covid-19_community_level'];
         if (cases == "Low"){
-            return 'green'
+            return '#fff3b0'
         }else if (cases == "Medium"){
-            return 'orange'
+            return '#e09f3e'
         }
         else {
-            return 'red'
+            return '#9e2a2b'
         }
       })
       .attr('fipsD', (countyDataObj) => {
@@ -49,11 +49,18 @@ var drawMap = () => {
       })
       .on('mouseover', (countyDataObj) => {
         tooltip.transition()
-               .syle("visibility", "visible")
+               .style("visibility", "visible")
+        
         var fips = countyDataObj['id']
-        var county = countyStatData.find((county) => {
-                   return county['fips'] === fips
+        var county = countyStatData.find((i) => {
+                   return i['county_fips'] == fips
                })
+        tooltip.text("COUNTY: " + county['county'] + " " + "STATE: " + county["state"] + " " +"COUNTY-POPULATION: "  + 
+                    county["county_population"] + " " + "COVID-CASES-PER-100K: " +county["covid_cases_per_100k"])
+      })
+      .on('mouseout', (countyDataObj) => {
+        tooltip.transition()
+               .style("visibility", "hidden")
       })
 }
 
@@ -65,7 +72,7 @@ d3.json(countyLink).then(
         } else {
             countyData = data
             countyData = topojson.feature(countyData, countyData.objects.counties).features
-            console.log(countyData)
+
 
             d3.csv(countyStatLink).then(
                 (data, err) => {
@@ -73,7 +80,6 @@ d3.json(countyLink).then(
                         console.log(err)
                     } else {
                         countyStatData = data
-                        console.log(countyStatData)
                         drawMap()
                     }
                 }
