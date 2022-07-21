@@ -1,5 +1,5 @@
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 1100 - margin.left - margin.right,
+var margin = {top: 50, right: 350, bottom: 70, left: 100},
+    width = 1500 - margin.left - margin.right,
     height = 750 - margin.top - margin.bottom;
   
 
@@ -12,11 +12,7 @@ var countyStatLink = 'https://raw.githubusercontent.com/dmoreno757/dmoreno757.gi
 var countyStatData;
 
 map = d3.select('#usMap')
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+tooltip = d3.select("#tooltip")
 
 var drawMap = () => {
     map.selectAll("path")
@@ -25,39 +21,75 @@ var drawMap = () => {
        .append("path")
        .attr("d", d3.geoPath())
        .attr('class', 'county')
-       .attr('fill', (item) => {
-        var fips = item['id']
-        var county = countyStatData.find((county) => {
-            return county['county_fips'] == fips
+       .attr('fill', (countyDataObj) => {
+        var fips = countyDataObj['id']
+        var county = countyStatData.find((i) => {
+            return i['county_fips'] == fips
         })
         var cases = county['covid_cases_per_100k'];
-        console.log(cases)
         if (cases <= 100){
-            return '#feeceb'
+            return '#ffffff'
         }else if (cases <= 500){
-            return '#fdd9d7'
+            return '#feebeb'
         } else if (cases <= 1000){
-            return '#fcc7c3'
+            return '#fcd6d6'
         } else if (cases <= 1500){
-            return '#fbb4af'
+            return '#fbc2c2'
         } else if (cases <= 2000){
-            return '#faa19b'
+            return '#f9aeae'
         } else if (cases <= 2500){
-            return '#f88e86'
+            return '#f89999'
         } else if (cases <= 3000){
-            return '#f77b72'
+            return '#f68585'
         } else if (cases <= 3500){
-            return '#f6695e'
+            return '#f57171'
         } else if (cases <= 4000){
-            return '#f5564a'
+            return '#f35c5c'
         } else if (cases <= 4500){
-            return '#f5564a'
+            return '#f24848'
         } else if (cases <= 5000){
-            return '#f44336'
+            return '#f03333'
+        } else if (cases <= 6000){
+            return '#ef1f1f'
+        } else if (cases <= 6500){
+            return '#e71111'
+        } else if (cases <= 7000){
+            return '#d20f0f'
+        } else if (cases <= 7500){
+            return '#be0e0e'
+        } else if (cases <= 8000){
+            return '#aa0c0c'
+        } else if (cases <= 8500){
+            return '#950b0b'
+        } else if (cases <= 9000){
+            return '#810909'
+        } else if (cases <= 9500){
+            return '#6d0808'
+        } else if (cases <= 9500){
+            return '#580606'
         }
         else {
-            return 'black'
+            return 'red'
         }
+      })
+      .attr('fipsD', (countyDataObj) => {
+        return countyDataObj['id']
+      })
+      .attr("countPerD", (countyDataObj) => {
+        var fips = countyDataObj['id']
+        var county = countyStatData.find((i) => {
+            return i['county_fips'] == fips
+        })
+        var cases = county['covid_cases_per_100k'];
+        return cases;
+      })
+      .on('mouseover', (countyDataObj) => {
+        tooltip.transition()
+               .syle("visibility", "visible")
+        var fips = countyDataObj['id']
+        var county = countyStatData.find((county) => {
+                   return county['fips'] === fips
+               })
       })
 }
 
@@ -69,7 +101,6 @@ d3.json(countyLink).then(
         } else {
             countyData = data
             countyData = topojson.feature(countyData, countyData.objects.counties).features
-            console.log('countydata!')
             console.log(countyData)
 
             d3.csv(countyStatLink).then(
@@ -78,7 +109,6 @@ d3.json(countyLink).then(
                         console.log(err)
                     } else {
                         countyStatData = data
-                        console.log("COUNTY STAT DATA")
                         console.log(countyStatData)
                         drawMap()
                     }

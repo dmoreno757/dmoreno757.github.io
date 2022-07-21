@@ -1,0 +1,26 @@
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background-color: #4e9696;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+svg{
+    background-color: #4e9696;
+}
+
+#usMap {
+    min-width: 1300px;
+    min-height: 800px;
+}
+
+#tooltip {
+    visibility: hidden;
+    height: auto;
+    width: auto;
+}
