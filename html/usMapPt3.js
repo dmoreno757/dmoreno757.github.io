@@ -26,47 +26,11 @@ var drawMap = () => {
         var county = countyStatData.find((i) => {
             return i['county_fips'] == fips
         })
-        var cases = county['covid_cases_per_100k'];
-        if (cases <= 100){
-            return '#ffffff'
-        }else if (cases <= 500){
-            return '#feebeb'
-        } else if (cases <= 1000){
-            return '#fcd6d6'
-        } else if (cases <= 1500){
-            return '#fbc2c2'
-        } else if (cases <= 2000){
-            return '#f9aeae'
-        } else if (cases <= 2500){
-            return '#f89999'
-        } else if (cases <= 3000){
-            return '#f68585'
-        } else if (cases <= 3500){
-            return '#f57171'
-        } else if (cases <= 4000){
-            return '#f35c5c'
-        } else if (cases <= 4500){
-            return '#f24848'
-        } else if (cases <= 5000){
-            return '#f03333'
-        } else if (cases <= 6000){
-            return '#ef1f1f'
-        } else if (cases <= 6500){
-            return '#e71111'
-        } else if (cases <= 7000){
-            return '#d20f0f'
-        } else if (cases <= 7500){
-            return '#be0e0e'
-        } else if (cases <= 8000){
-            return '#aa0c0c'
-        } else if (cases <= 8500){
-            return '#950b0b'
-        } else if (cases <= 9000){
-            return '#810909'
-        } else if (cases <= 9500){
-            return '#6d0808'
-        } else if (cases <= 9500){
-            return '#580606'
+        var cases = county['covid-19_community_level'];
+        if (cases == "Low"){
+            return 'green'
+        }else if (cases == "Medium"){
+            return 'orange'
         }
         else {
             return 'red'
