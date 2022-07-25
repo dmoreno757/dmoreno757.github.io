@@ -15,10 +15,11 @@ d3.csv("https://raw.githubusercontent.com/dmoreno757/dmoreno757.github.io/main/h
     // Now I can use this dataset:
   function(data) {
 
-const x = d3.scaleLinear()
+var x = d3.scaleLinear()
   .domain([0, 50])
   .range([ 0, width ]);
-svg.append("g")
+
+var xAXIS = svg.append("g")
   .attr("transform", `translate(0, ${height})`)
   .call(d3.axisBottom(x));
 
@@ -29,45 +30,81 @@ const y = d3.scaleLinear()
 svg.append("g")
   .call(d3.axisLeft(y));
 
-var tooltip = d3.select("#linechartPt1")
-    .append("div")
-    .style("opacity", 0)
+var tooltip = svg.append("g")
     .attr("class", "tooltip")
+    .style("opacity", 0)
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "5px")
     .style("border-radius", "10px")
     .style("padding", "10px")
+    .text("TOOLTIP");
 
-var mouseOver = function(event, d) {
-  tooltip.style("opacity", 1)
-}
+var box = svg.append("defs").append("svg:clipPath")
+  .attr("id", "box")
+  .append("svg:rect")
+  .attr("width", width )
+  .attr("height", height )
+  .attr("x", 0)
+  .attr("y", 0);
 
-var mouseMove = function(event, d) {
-  tooltip
-    .html("COUNTY: " + d.county + " " + "STATE: " + d.state + " " + "COVID-HOSPITILIZATION-PER-100K: " + d.covid_hospital_admissions_per_100k + " " + "COVID-CASES-PER-100K:" + d.covid_cases_per_100k)
-    .style("left", (d3.mouse(this)[0]) + "px")
-    .style("top", (d3.mouse(this)[1]) + "px")
-}
+var brush = d3.brushX()
+  .extent([[0,0], [width,height]])
+  .on("end", updateBox)
 
-var mouseLeave = function(d) {
-  tooltip.transition().duration(300).style("opacity", 0)
-}
+var scatters = svg.append('g')
+  .attr("clip-path", "url(#box)")
 
-svg.append("g")
+scatters
     .selectAll("dot")
     .data(data)
     .join("circle")
-      .attr("cx", d=>x(d.covid_hospital_admissions_per_100k))
-      .attr("cy", d=>y(d.covid_cases_per_100k))
-      .attr("r", 3)
-      .style("fill", "#69b3a2")
-      .style("opacity", 1)
-      .style("stroke", "white")
-    .on("mouseover", mouseOver )
-    .on("mousemove", mouseMove )
-    .on("mouseleave", mouseLeave )
+    .attr("cx", function(d) { return x(d.covid_hospital_admissions_per_100k); })
+    .attr("cy", function(d) { return y(d.covid_cases_per_100k); })
+    .attr("r", 3)
+    .style("fill", "#69b3a2")
+    .style("opacity", 1)
+    .style("stroke", "white")
+    .text(function(d) {return x(d) + "px"; })
+    .on("mouseover", function(d){tooltip.text(d); return tooltip.style("visibility", "visible");})
+      .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+      .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
+
+scatters
+  .append("g")
+    .attr("class", "brush")
+    .call(brush);
+
+var timeIdle
+function idle() { timeIdle = null; }
+
+function updateBox() {
+  
+  limit = d3.event.selection
+
+  if (!limit) {
+    if (!timeIdle) return timeIdle = setTimeout(idle, 500)
+    x.domain([0, 50])
+  } else {
+    x.domain([x.invert(limit[0]), x.invert(limit[1])])
+    scatters.select(".brush").call(brush.move, null)
+  }
+
+  xAXIS.transition().duration(1000).call(d3.axisBottom(x))
+  scatters
+    .selectAll("circle")
+    .transition().duration(1000)
+    .attr("cx", function(d) { return x(d.covid_hospital_admissions_per_100k); })
+    .attr("cy", function(d) { return y(d.covid_cases_per_100k); })
+    .text(function(d) {return x(d) + "px"; })
+    .on("mouseover", function(d){tooltip.text(d); return tooltip.style("visibility", "visible");})
+    .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+    .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
+}
+
+    
 })
 
 //https://d3-graph-gallery.com/graph/line_basic.html
