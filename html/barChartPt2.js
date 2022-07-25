@@ -20,37 +20,41 @@ var nest = d3.nest()
   .sort (function(a,b) {
     return  d3.descending(a.value,b.value)
   });
-console.log(nest);
-
 
 // X axis
 var x = d3.scaleBand()
   .range([ 0, width ])
-  .domain(nest.map(function(d) { return d.key; }))
   .padding(0.4);
-svg.append("g")
+
+var xAXIS = svg.append("g")
   .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x))
-  .selectAll("text")
-    .attr("transform", "translate(-10,0)rotate(-45)")
-    .style("text-anchor", "end");
 
 // Add Y axis
 var y = d3.scaleLinear()
-  .domain([0, 10000000])
   .range([ height, 0]);
-svg.append("g")
-  .call(d3.axisLeft(y));
 
-// Bars
+var yAXIS = svg.append("g")
+  .attr("class", "YAXIS")
+
+function update(data) {
+
+  x.domain(data.map(function(d) { return d.key; }))
+  xAXIS.call(d3.axisBottom(x))
+
+  y.domain
 svg.selectAll("mybar")
-  .data(nest.sort(function(a,b) {return b-a}))
-  .enter()
-  .append("rect")
-    .attr("x", function(d) { return x(d.key); })
-    .attr("y", function(d) { return y(d.value); })
-    .attr("width", x.bandwidth())
-    .attr("height", function(d) { return height - y(d.value); })
-    .attr("fill", "#69b3a2")
+.data(nest.sort(function(a,b) {return b-a}))
+.enter()
+.append("rect")
+  .attr("x", function(d) { return x(d.key); })
+  .attr("y", function(d) { return y(d.value); })
+  .attr("width", x.bandwidth())
+  .attr("height", function(d) { return height - y(d.value); })
+  .attr("fill", "#69b3a2")
+    
+}
+
+
+
 
 })
