@@ -1,7 +1,7 @@
-Age_Group,Census Population Estimate,Count_of_People_with_Completed_Primary_Series,Percentage of Age Group with Completed Primary Series,Count of People Eligible for First Booster Dose,Percentage of Age Group Eligible for First Booster Dose,Count_of_People_with_First_Booster_Dose,Percentage of Age Group with First Booster Dose,Count of People Eligible for Second Booster Dose,Percentage of Age Group Eligible for Second Booster Dose,Count_of_People_with_Second_Booster_Dose,Percentage of Age Group with Second Booster Dose
-Ages_5+,312265041,222866449,71.4,216858000,69.4,107348428,34.4,N/A,N/A,N/A,N/A
-Ages_5-11,28744900,8672809,30.2,7469279,26,795754,2.8,N/A,N/A,N/A,N/A
-Ages_12-17,25304508,15221693,60.2,14688124,58,4230179,16.7,N/A,N/A,N/A,N/A
-Ages_18-49,139763772,96418712,69,94537952,67.6,38026174,27.2,N/A,N/A,N/A,N/A
-Ages_50-64,63659835,52253852,82.1,51282155,80.6,28844182,45.3,27073683,42.5,6143461,9.7
-Ages_65+,54792026,50299383,91.8,48880490,89.2,35452139,64.7,33302293,60.8,12951405,23.6
+Age_Group,Census_Population_Estimate,Count_of_People_with_Completed_Primary_Series,Count_of_People_with_First_Booster_Dose,Count_of_People_with_Second_Booster_Dose
+Ages_5+,312265041,222866449,107348428,0
+Ages_5-11,28744900,8672809,795754,0
+Ages_12-17,25304508,15221693,4230179,0
+Ages_18-49,139763772,96418712,38026174,0
+Ages_50-64,63659835,52253852,28844182,6143461
+Ages_65+,54792026,50299383,35452139,12951405
