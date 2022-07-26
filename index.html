@@ -3,76 +3,18 @@
     <meta charset="utf-8">
     <title>Covid in the US</title>
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="barChartIndex.js" defer></script>
 </head>
 <body>
     <h1>Covid Throughout The United States</h1>
     <p>Is Covid Going Away?</p>
+    <button onclick="update('Count_of_People_with_Completed_Primary_Series')">Completed Series</button>
+    <button onclick="update('Count_of_People_with_First_Booster_Dose')">Completed First Booster</button>
+    <button onclick="update('Count_of_People_with_Second_Booster_Dose')">Completed First Booster</button>
     <div id="linechartPt1"></div>
     <a href="html/barChartPt2.html">Covid Cases States</a>
     <a href="html/usMapPt3.html">US MAP</a>
 </body>
-
-<script>
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 1000 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
-
-// append the svg object to the body of the page
-var svg = d3.select("#linechartPt1")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    var x = d3.scaleBand()
-  .range([ 0, width ])
-  .padding(0.4);
-
-var xAXIS = svg.append("g")
-  .attr("transform", "translate(0," + height + ")");
-
-var y = d3.scaleLinear()
-  .range([ height, 0]);
-
-var yAXIS = svg.append("g")
-  .attr("class", "YAXIS")
-
-function update(dataSel) {
-
-  d3.csv ("https://raw.githubusercontent.com/dmoreno757/dmoreno757.github.io/main/html/vaccinationDose.csv", function(data) {
-
-  x.domain(data.map(function(d) { return d.Age Group; }))
-  xAXIS.transition().duration(1000).call(d3.axisBottom(x))
-
-  y.domain([0, d3.max(data, function(d) {return +d[dataSel]})])
-  yAXIS.transition().duration(1000).call(d3.axisLeft(y))
-
-
-
-var box = svg.selectAll("rect")
-  .data(data)
-
-box
-  .enter()
-  .append("rect")
-  .merge(box)
-  .transition()
-  .duration(1000)
-    .attr("x", function(d) { return x(d.State); })
-    .attr("y", function(d) { return y(d[dataSel]); })
-    .attr("width", x.bandwidth())
-    .attr("height", function(d) { return height - y(d[dataSel]); })
-    .attr("fill", "#69b3a2")
-  })
-}
-
-update('Cases_White')
-
-//https://covidtracking.com/race/dashboard
-//https://d3-graph-gallery.com/graph/barplot_button_data_csv.html
-    
-</script>
 </html>
 
 
