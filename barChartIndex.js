@@ -36,19 +36,19 @@ function update(dataSel) {
 
 
 
-var box = svg.selectAll("rect")
-  .data(data)
+  var box = svg.selectAll("rect")
+    .data(data)
 
-box
-  .enter()
-  .append("rect")
-  .merge(box)
-  .transition()
-  .duration(1000)
-    .attr("x", function(d) { return x(d.Age_Group); })
-    .attr("y", function(d) { return y(d[dataSel]); })
-    .attr("width", x.bandwidth())
-    .attr("height", function(d) { return height - y(d[dataSel]); })
+  box
+    .enter()
+    .append("rect")
+    .merge(box)
+    .transition()
+    .duration(1000)
+      .attr("x", function(d) { return x(d.Age_Group); })
+      .attr("y", function(d) { return y(d[dataSel]); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d[dataSel]); })
     .attr("fill", "#69b3a2")
   })
 }
