@@ -1,32 +1,23 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <title>Covid in the US</title>
-    <script src="https://d3js.org/d3.v4.js"></script>
-</head>
-<body>
-    <h1>Covid Throughout The United States</h1>
-    <p>Is Covid Going Away?</p>
-    <div id="linechartPt1"></div>
-    <a href="html/barChartPt2.html">Covid Cases States</a>
-    <a href="html/usMapPt3.html">US MAP</a>
-</body>
 
-<script>
+
+// set the dimensions and margins of the grap
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 1000 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#linechartPt1")
+var svg = d3.select("#my_dataviz")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv", 
-    // When reading the csv, I must format variables:
+//Read the data
+d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
+
+  // When reading the csv, I must format variables:
   function(d){
     return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
   },
@@ -61,10 +52,3 @@ d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv",
         )
 
 })
-    
-</script>
-</html>
-
-
-
-    
