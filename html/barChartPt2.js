@@ -50,6 +50,33 @@ box
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d[dataSel]); })
     .attr("fill", "#69b3a2")
+
+
+
+      var annotations = [
+          {
+          note: {
+            label:"AZ to GA have the most cases within ethnicity, so covid does not pick one. It reaches out whoever it can, also population can play a role too.",
+            title: "Cases of Ethnicity and Race Using States",
+            align: "left"
+          },
+          type: d3.annotationCalloutCircle,
+          subject: { radius: 100, radiusPadding: 1 },
+          color: ["red"],
+          x: 150,
+          y: 500,
+          dy: -370,
+          dx: 100
+        }
+        ]
+  
+      var makeAnnotations = d3.annotation()
+          .annotations(annotations)
+          .textWrap(150)
+  
+      svg.append("g")
+          .attr("style", "font-size:15px;")
+          .call(makeAnnotations)
   })
 }
 

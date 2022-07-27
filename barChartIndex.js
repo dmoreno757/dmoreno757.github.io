@@ -50,6 +50,32 @@ function update(dataSel) {
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d[dataSel]); })
     .attr("fill", "#69b3a2")
+
+    var annotations = [
+      {
+      note: {
+        label:"Age 18-49 have the highest completion for the first series of vaccination, once we go to the First Booster and to the Second Booster we see that the vaccination increases for the older people.",
+        title: "Covid-19 Vaccination by Age",
+        align: "left"
+      },
+      type: d3.annotationCalloutCircle,
+      subject: { radius: 200, radiusPadding: 5 },
+      color: ["red"],
+      x: 550,
+      y: 200,
+      dy: -10,
+      dx: -480
+    }
+    ]
+
+  var makeAnnotations = d3.annotation()
+      .annotations(annotations)
+      .textWrap(150)
+
+  svg.append("g")
+      .attr("style", "font-size:15px;")
+      .call(makeAnnotations)
+
   })
 }
 
