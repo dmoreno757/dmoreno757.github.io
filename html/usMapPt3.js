@@ -14,6 +14,7 @@ var countyStatData;
 map = d3.select('#usMap')
 tooltip = d3.select("#tooltip")
 
+
 var drawMap = () => {
     map.selectAll("path")
        .data(countyData)
