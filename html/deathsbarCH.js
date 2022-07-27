@@ -26,7 +26,7 @@ var yAXIS = svg.append("g")
 
 function update(dataSel) {
 
-  d3.csv ("https://raw.githubusercontent.com/dmoreno757/dmoreno757.github.io/main/html/CRDT%20Data-%20clean2.csv", function(data) {
+  d3.csv ("https://raw.githubusercontent.com/dmoreno757/dmoreno757.github.io/main/html/covid19Deaths-Bar.csv", function(data) {
 
   x.domain(data.map(function(d) { return d.State; }))
   xAXIS.transition().duration(1000).call(d3.axisBottom(x))
