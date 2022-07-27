@@ -1,17 +1,12 @@
-State,Age_Group,COVID-19_Deaths
-United_States,<1 years,302
-United_States,0-17 years,1138
-United_States,1-4 years,161
-United_States,5-14 years,363
-United_States,15-24 years,2709
-United_States,18-29 years,6406
-United_States,25-34 years,11392
-United_States,30-39 years,18442
-United_States,35-44 years,28098
-United_States,40-49 years,43488
-United_States,45-54 years,67291
-United_States,50-64 years,189543
-United_States,55-64 years,148701
-United_States,65-74 years,233043
-United_States,75-84 years,262816
-United_States,>85,263099
+﻿Age_Group,Count_of_deaths,Count_of_cases
+0-4 Years,531,2785621
+5-11 Years,421,5456490
+12-15 Years,430,3813617
+16-17 Years,330,2233011
+18-29 Years,6413,17232258
+30-39 Years,15909,13847462
+40-49 Years,36367,11747335
+50-64 Years,159151,15067185
+65-74 Years,198912,5664495
+75-84 Years,228657,2821957
+85+ Years,233518,1382206
