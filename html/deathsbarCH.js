@@ -80,7 +80,7 @@ if (dataSel == "Count_of_deaths") {
     var annotationsCase = [
         {
         note: {
-          label:"Peek covid cases ages 18-29 Years, also other categories next to each other are high",
+          label:"Peek covid cases ages 18-64 Years",
           title: "High Covid Cases",
           align: "right"
         },
@@ -107,3 +107,5 @@ if (dataSel == "Count_of_deaths") {
 }
 
 update('Count_of_cases')
+//https://covid.cdc.gov/covid-data-tracker/#datatracker-home
+//https://d3-graph-gallery.com/graph/barplot_button_data_csv.html

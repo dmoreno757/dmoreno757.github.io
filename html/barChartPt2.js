@@ -56,8 +56,8 @@ box
       var annotations = [
           {
           note: {
-            label:"AZ to GA have the most cases within ethnicity, so covid does not pick one. It reaches out whoever it can, also population can play a role too.",
-            title: "Cases of Ethnicity and Race Using States",
+            label:"AZ to GA have the most cases within race/ethnicity. Covid-19 can infect anyone, also the number of population can play a factor too.",
+            title: "Cases of Ethnicity/Race Based on Each State",
             align: "left"
           },
           type: d3.annotationCalloutCircle,
@@ -65,7 +65,7 @@ box
           color: ["red"],
           x: 150,
           y: 500,
-          dy: -370,
+          dy: -336,
           dx: 100
         }
         ]

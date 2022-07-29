@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>Covid in the US</title>
+    <title>Covid-19 in the US</title>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="barChartIndex.js" defer></script>
 </head>
 <body>
-    <h1>Covid Throughout The United States</h1>
-    <p>Is Covid Going Away?</p>
-    <button onclick="update('Count_of_People_with_Completed_Primary_Series')">Completed Series</button>
-    <button onclick="update('Count_of_People_with_First_Booster_Dose')">Completed First Booster</button>
-    <button onclick="update('Count_of_People_with_Second_Booster_Dose')">Completed Second Booster</button>
+    <h1>Covid-19 Vaccination in the US by Age Group</h1>
+    <h4>Is Covid Going Away?</h4>
+    <p> The Bar chart represents the <mark style="background: #abdbe3!important">different age group that has been vaccinated by series</mark>.  
+       Below you can select the different vaccination series that is distributed by age group.</p>
+    <button style="background-color:#e28743;color:white;" onclick="update('Count_of_People_with_Completed_Primary_Series')">Completed Series</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Count_of_People_with_First_Booster_Dose')">Completed First Booster</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Count_of_People_with_Second_Booster_Dose')">Completed Second Booster</button>
     <div id="linechartPt1"></div>
-    <a href="html/barChartPt2.html">Covid Cases States</a>
-    <a href="html/usMapPt3.html">US MAP</a>
+    <h4><mark style="background: #abdbe3!important">Next, Lets Look at the Correlation Between Race and Ethnicity and Covid-19</mark>
+    <a href="html/barChartPt2.html"><button style="background-color:#21130d;color:white;">Cases By Race & Ethnicity</button></a>
+    </h4>
 </body>
 </html>
 

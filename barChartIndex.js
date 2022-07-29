@@ -1,6 +1,6 @@
 var margin = {top: 30, right: 30, bottom: 70, left: 100},
     width = 900 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    height = 650 - margin.top - margin.bottom;
 
 var svg = d3.select("#linechartPt1")
   .append("svg")
@@ -54,12 +54,12 @@ function update(dataSel) {
     var annotations = [
       {
       note: {
-        label:"Age 18-49 have the highest completion for the first series of vaccination, once we go to the First Booster and to the Second Booster we see that the vaccination increases for the older people.",
-        title: "Covid-19 Vaccination by Age",
+        label:"Ages 18-49 have the highest completion for the first series of vaccination. In the first and second booster displays a large count between 50 to 65+ because of their health vulnerabilities.",
+        title: "Covid-19 Vaccination by Age Group",
         align: "left"
       },
       type: d3.annotationCalloutCircle,
-      subject: { radius: 200, radiusPadding: 5 },
+      subject: { radius: 150, radiusPadding: 5 },
       color: ["red"],
       x: 550,
       y: 200,
@@ -81,5 +81,5 @@ function update(dataSel) {
 
 update('Count_of_People_with_Completed_Primary_Series')
 
-//https://covidtracking.com/race/dashboard
+//https://covid.cdc.gov/covid-data-tracker/#vaccinations_vacc-people-additional-dose-totalpop
 //https://d3-graph-gallery.com/graph/barplot_button_data_csv.html

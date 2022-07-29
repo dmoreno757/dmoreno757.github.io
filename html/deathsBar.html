@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>Covid in the US</title>
+    <title>Covid in the US Deaths</title>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="deathsbarCH.js" defer></script>
 </head>
 <body>
-    <h1>Covid Throughout The United States</h1>
-    <p>Is Covid Going Away?</p>
-    <button onclick="update('Count_of_deaths')">Death Count</button>
-    <button onclick="update('Count_of_cases')">Cases Count</button>
+    <h1>Covid-19 Cases and Deaths in the by Age Group</h1>
+    <h4>Death Counts and Cases Increases</h4>
+    <p>Below, the chart displays the <mark style="background: #abdbe3!important">number of case count and death count by each age group</mark>. Please click under to see death count for more info. We can confirm that the older we get, 
+        we are more prone to covid-19 that can lead to death.
+        The ages between 18-64, shows an increase in covid-19 cases, however a decrease in deaths.
+        Overall, covid-19 is not going away with vaccination increasing by our older folks we still see an increase in deaths from
+        their age group. While vaccination helps to reduce fatalities, infections can still occur. Race/Ethnicity does not factor in covid-19 infection, 
+        contact comes to anyone.
+    </p>
+    <button style="background-color:#e28743;color:white;" onclick="update('Count_of_cases')">Cases Count</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Count_of_deaths')">Death Count</button>
     <div id="barDeath"></div>
+    <h4><mark style="background: #abdbe3!important"> these links to go through what we learned, thank you for you time on my presentation on covid-19</mark>
+        <a href="../index.html"><button style="background-color:#21130d;color:white;">Vaccination With Age(HOME)</button></a>
+        <a href="barChartPt2.html"><button style="background-color:#21130d;color:white;">Cases By Race & Ethnicity</button></a>     
+    </h4>
 </body>
 </html>

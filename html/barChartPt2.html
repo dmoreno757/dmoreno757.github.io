@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>Covid in the US</title>
+    <title>Covid-19 Cases In The US by Race and Ethnicity</title>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="barChartPt2.js" defer></script>
 </head>
 <body>
-    <h1>States comparison</h1>
-    <h3>Race and Ethnicity Data From Every State of Covid Cases</h3>
-    <button onclick="update('Cases_White')">Cases White</button>
-    <button onclick="update('Cases_Black')">Cases Black</button>
-    <button onclick="update('Cases_Latinx')">Cases Latinx</button>
-    <button onclick="update('Cases_Asian')">Cases Asian</button>
-    <button onclick="update('Cases_AIAN')">Cases Native Hawaiian and Pacific Islander</button>
-    <button onclick="update('Cases_Black')">American Indian or Alaska Native alone</button>
+    <h1>Covid-19 Cases In The US by Race and Ethnicity</h1>
+    <h4>Does Race and Ethnicity Play a Role in Covid-19 Infection?</h4>
+    <p>The bar chart displays the cases within <mark style="background: #abdbe3!important"> Race and Ethnicity in each state </mark>. We can infer that seeing the data from the chart that it 
+        shows it is not a factor for covid-19 infection.
+        Below you can select each cases based on Race and Ethnicity to see population distribution of covid-19 within each state. </p>
+    <button style="background-color:#e28743;color:white;" onclick="update('Cases_White')">Cases White</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Cases_Black')">Cases Black</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Cases_Latinx')">Cases Latinx</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Cases_Asian')">Cases Asian</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Cases_AIAN')">Cases Native Hawaiian and Pacific Islander</button>
+    <button style="background-color:#e28743;color:white;" onclick="update('Cases_Black')">American Indian or Alaska Native alone</button>
     <div id="barChart"></div>
-    <a href="usMapPt3.html">Part 3 Distribution Of Covid-19 through out our communities</a>
+    <h4><mark style="background: #abdbe3!important"> We Will See The Population We Have Lost Due To Covid-19</mark>
+        <a href="deathsbar.html"><button style="background-color:#21130d;color:white">Covid-19 Death and Cases</button></a>
+    </h4>
 </body>
 </html>
